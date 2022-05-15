@@ -20,6 +20,14 @@ public abstract class OAHashTable implements IHashTable {
 	
 	@Override
 	public void Insert(HashTableElement hte) throws TableIsFullException,KeyAlreadyExistsException {
+		int i=0;
+		int index;
+		do{
+			index = this.Hash(hte.GetKey(), i);
+			i++;
+		}
+		 while (table[index] != null);
+
 		// TODO implement insertion	
 	}
 	
