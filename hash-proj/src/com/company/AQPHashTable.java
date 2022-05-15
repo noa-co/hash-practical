@@ -3,7 +3,7 @@ package com.company;
 public class AQPHashTable extends OAHashTable {
 
 	public AQPHashTable(int m, long p) {
-		super(m);
+		super(m, p);
 		// TODO Complete hash table constructor.
 	}
 	

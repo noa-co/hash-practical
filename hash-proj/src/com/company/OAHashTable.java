@@ -3,13 +3,15 @@ package com.company;
 public abstract class OAHashTable implements IHashTable {
 	
 	private HashTableElement [] table;
+	protected ModHash modHash;
+	protected int m;
 	
-	public OAHashTable(int m) {
+	public OAHashTable(int m, long p) {
 		this.table = new HashTableElement[m];
-		// TODO add to constructor as needed
+		this.m = m;
+		this.modHash = ModHash.GetFunc(m, p);
 	}
-	
-	
+
 	@Override
 	public HashTableElement Find(long key) {
 		// TODO implement find

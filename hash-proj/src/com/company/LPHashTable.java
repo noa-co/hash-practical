@@ -3,7 +3,7 @@ package com.company;
 public class LPHashTable extends OAHashTable {
 	
 	public LPHashTable(int m, long p) {
-		super(m);
+		super(m, p);
 		// TODO Complete hash table constructor.
 	}
 	
