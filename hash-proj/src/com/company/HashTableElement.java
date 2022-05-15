@@ -1,3 +1,4 @@
+package com.company;
 
 public class HashTableElement{
 	private long key;

@@ -1,8 +1,8 @@
-import java.util.Random;
+package com.company;
 
-public class AQPHashTable extends OAHashTable {
-
-	public AQPHashTable(int m, long p) {
+public class LPHashTable extends OAHashTable {
+	
+	public LPHashTable(int m, long p) {
 		super(m);
 		// TODO Complete hash table constructor.
 	}
@@ -12,4 +12,5 @@ public class AQPHashTable extends OAHashTable {
 		// TODO implement hash function
 		return 0;
 	}
+	
 }
