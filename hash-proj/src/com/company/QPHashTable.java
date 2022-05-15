@@ -4,12 +4,11 @@ public class QPHashTable extends OAHashTable {
 
 	public QPHashTable(int m, long p) {
 		super(m, p);
-		// TODO Complete hash table constructor.
 	}
 	
 	@Override
 	public int Hash(long x, int i) {
-		// TODO implement hash function
-		return 0;
+		int hk = this.modHash.Hash(x);
+		return (hk + (i*i))% this.m;
 	}
 }
