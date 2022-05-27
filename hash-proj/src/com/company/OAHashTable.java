@@ -30,9 +30,43 @@ public abstract class OAHashTable implements IHashTable {
 	
 	@Override
 	public void Insert(HashTableElement hte) throws TableIsFullException,KeyAlreadyExistsException {
-		// TODO implement insertion
+		int index;
+		HashTableElement element;
+		Integer deletedIndex = null;
+		long keyToInsert = hte.GetKey();
+
+		for (int i = 0; i < this.m; i++) {
+			index = this.Hash(keyToInsert, i);
+			element = table[index];
+
+			if (element == null){ // reached end of search, insert to deleted index if exists otherwise to null spot
+				if (deletedIndex != null)
+					table[deletedIndex] = hte;
+				else
+					table[index] = hte;
+				return;
+			}
+
+			if (deletedIndex == null && element == deletedElement) { // reached possible insert spot containing deleted
+				deletedIndex = index;
+				continue;
+			}
+
+			if (element.GetKey() == keyToInsert) // found an existing element with the same key
+				throw new KeyAlreadyExistsException(hte);
+		}
+		// got here meaning didn't get to a null spot in search.
+		// if there wasn't an index with deleted- the table is full.
+		if (deletedIndex == null)
+			throw new TableIsFullException(hte);
+		table[deletedIndex] = hte;
 	}
 
+	/**
+	 *
+	 * @param key - the key to find the index of element in the table
+	 * @return the index of table entry with the required key if exists, or null otherwise.
+	 */
 	private Integer FindIndex(long key){
 		int index;
 		HashTableElement element;
