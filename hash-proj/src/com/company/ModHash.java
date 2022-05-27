@@ -1,5 +1,6 @@
 package com.company;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 
 public class ModHash {
@@ -12,8 +13,9 @@ public class ModHash {
 	
 	public static ModHash GetFunc(int m, long p){
 		Random r = new Random();
-		long a = (r.nextLong()  % (p - 1)) + 1;
-		long b = (r.nextLong()  % p);
+		// todo what if p zero
+		long a = ThreadLocalRandom.current().nextLong(1, p);
+		long b = ThreadLocalRandom.current().nextLong(0, p);
 		return new ModHash(a, b, m, p);
 
 	}
