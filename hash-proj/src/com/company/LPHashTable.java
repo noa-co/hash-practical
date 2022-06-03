@@ -9,7 +9,7 @@ public class LPHashTable extends OAHashTable {
 	@Override
 	public int Hash(long x, int i) {
 		int hk = this.modHash.Hash(x);
-		return ((hk + i) % this.m);
+		return Math.floorMod(hk + i, this.m);
 	}
 	
 }

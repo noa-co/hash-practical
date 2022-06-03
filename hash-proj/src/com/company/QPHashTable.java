@@ -9,6 +9,6 @@ public class QPHashTable extends OAHashTable {
 	@Override
 	public int Hash(long x, int i) {
 		int hk = this.modHash.Hash(x);
-		return (hk + (i*i))% this.m;
+		return Math.floorMod(hk + (i*i), m);
 	}
 }

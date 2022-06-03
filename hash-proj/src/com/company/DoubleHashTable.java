@@ -15,7 +15,6 @@ public class DoubleHashTable extends OAHashTable {
 			hk2 = 1;
 		}
 		long res =  ((hk + (i * hk2)) );
-		int finalres = (int) res % this.m;
-		return finalres;
+		return Math.floorMod((int) res , this.m);
 	}
 }

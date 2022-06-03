@@ -8,12 +8,11 @@ public class ModHash {
 	private final Function<Long, Integer> func;
 
 	private ModHash(long a, long b, int m, long p){
-		this.func = (Long x)-> (int)(((a*x + b) % p) % m);
+		this.func = (Long x)-> Math.floorMod((int)(((a*x + b) % p)), m);
 	}
 	
 	public static ModHash GetFunc(int m, long p){
 		Random r = new Random();
-		// todo what if p zero
 		long a = ThreadLocalRandom.current().nextLong(1, p);
 		long b = ThreadLocalRandom.current().nextLong(0, p);
 		return new ModHash(a, b, m, p);
