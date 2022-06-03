@@ -1,16 +1,21 @@
 package com.company;
 
 public class DoubleHashTable extends OAHashTable {
-	
+	protected ModHash modHash2;
 	public DoubleHashTable(int m, long p) {
 		super(m, p);
-		// TODO Complete hash table constructor.
+		this.modHash2 = ModHash.GetFunc(m, p);
 	}
 	
 	@Override
 	public int Hash(long x, int i) {
-		// TODO implement hash function
-		return 0;
+		long hk = this.modHash.Hash(x);
+		long hk2 = this.modHash2.Hash(x);
+		if (hk2 == 0){
+			hk2 = 1;
+		}
+		long res =  ((hk + (i * hk2)) );
+		int finalres = (int) res % this.m;
+		return finalres;
 	}
-	
 }
