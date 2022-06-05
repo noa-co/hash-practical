@@ -1,4 +1,12 @@
 package com.company;
+/*
+username1 - nc7
+id1      - 209223114
+name1    - noa cohen
+username2 - ec1
+id2      - 205882236
+name2    - eyal cohen
+*/
 
 public abstract class OAHashTable implements IHashTable {
 	
